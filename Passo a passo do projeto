@@ -1,0 +1,14 @@
+1º Deixar o usuário selecionar o tipo do veículo: 
+    1.1- colocar o tipo do veículo na URL;
+    1.2- enviar a url, pegar o json, tratar;
+    1.3- colocar o resultado do json no select;
+
+2º Escolher a marca do veículo:
+    1.1- pegar a primeira url, e acrescentar o código
+    1.2- enviar a url, pegar o json, tratar;
+    1.3 - colocar o resultado no select;
+
+3º Escolher a o ano:
+    1.1- pegar a segunda url, e acrescentar o código
+    1.2- enviar a url, pegar o json, tratar;
+    1.3 - colocar o resultado no select;
