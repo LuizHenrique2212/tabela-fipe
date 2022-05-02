@@ -5,16 +5,38 @@
     font-family: sans-serif;
 }
 
+html body {
+    overflow-x: hidden;
+}
+
 #container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    overflow-x:auto;
+    margin: 60px auto;
+    padding-top: 30px;
+    background-color: rgb(255, 252, 248);
+    width: 800px;
+    height: 1200px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 header h1 {
-    margin: 50px;
+    margin-left: 20px;
+}
+
+header img {
+    width: 40px;
+}
+
+main {
+    padding-top: 30px;
+    text-align: center;
 }
 
 #options {
@@ -27,8 +49,9 @@ header h1 {
 .icons {
     width: 100px;
     height: 100px;
-    margin: 20px;
-    background-color: rgb(170, 170, 170);
+    margin: 50px 20px 0px;
+    background-color: rgb(252, 246, 236);
+    border: 2px solid #9c0000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +60,9 @@ header h1 {
 
 .icons:hover {
     cursor: pointer;
-    background-color: grey;
+    opacity: 0.6;
+    background-color: white;
+
 }
 
 .vehicleChoise {
@@ -50,19 +75,19 @@ header h1 {
 }
 
 #cars {
-    background-image: url(./assets/cars.svg);
+    background-image: url(./assets/car-svgrepo-com.svg);
 }
 
 #motorcycles {
-    background-image: url(./assets/motorcycles.svg);
+    background-image: url(./assets/motorcycle-svgrepo-com.svg);
 }
 
 #trucks {
-    background-image: url(./assets/trucks.svg);
+    background-image: url(./assets/trucks-moving-svgrepo-com.svg);
 }
 
 #airplanes {
-    background-image: url(./assets/airplanes.svg);
+    background-image: url(./assets/airplanes-airplane-svgrepo-com.svg);
 }
 
 #vehicle-details select {
@@ -84,9 +109,16 @@ main button {
     font-size: 20px;
     padding: 20px 20px;
     border-radius: 10px;
-    color: rgb(0, 0, 0);
+    color: white;
     font-weight: bold;
     background: yellowgreen;
+}
+
+main button:hover {
+    color: black;
+    cursor: pointer;
+    background-color: white;
+    border: 2px solid yellowgreen;
 }
 
 table {
@@ -107,15 +139,20 @@ footer {
     display: none;
 }
 
-@media (max-width: 650px){
-    header h1{
-        font-size: 17px;
+@media (max-width: 650px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25x;
     }
 
     .icons {
-        width: 50px;
-        height: 50px;
-        margin: 5px;
+        width: 90px;
+        height: 90px;
+        margin: 40px 10px 20px;
+
     }
 
     .vehicleChoise {
@@ -130,5 +167,44 @@ footer {
         width: 250px;
         padding: 15px;
     }
-    
+
+}
+
+@media (max-width: 430px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25x;
+    }
+
+    .icons {
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        background-color: white;
+        border: 2px solid yellowgreen;
+        fill: white;
+    }
+
+    #options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .vehicleChoise {
+        margin: 13px;
+    }
+
+    #vehicle-details select {
+        width: 200px;
+    }
+
+    table {
+        width: 250px;
+        padding: 15px;
+    }
+
 }

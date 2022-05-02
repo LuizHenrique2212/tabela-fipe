@@ -13,7 +13,7 @@ let backgroundIcons = document.querySelectorAll('.icons');
 backgroundIcons.forEach((iconOnFocus) => {
     iconOnFocus.addEventListener('click', () => {
         for (let backgrounds of backgroundIcons) {
-            backgrounds.style.backgroundColor = 'rgb(170, 170, 170)';
+            backgrounds.style.backgroundColor = ' rgb(252, 246, 236)';
         };
         iconOnFocus.style.backgroundColor = 'yellowgreen';
     });
@@ -30,7 +30,7 @@ vehicles.forEach((divSelected) => {
 
         const element = event.target;
         const id = element.id;
-        if (id == 'airplanes') return alert('prank');
+        if (id == 'airplanes') return alert('Esta opção ainda não está disponível!');
         urlBranch = `https://parallelum.com.br/fipe/api/v2/${id}/brands`;
         const options = await getAPIcontent(urlBranch);
         fillSelect(options, branch);
@@ -56,18 +56,23 @@ models.addEventListener('change', async function getAndFillYears() {
 
 
 btnCheckPrice.addEventListener('click', async () => {
-    let brandAndModel = document.querySelector('#brand-model');
-    let price = document.querySelector('#price');
-    let modelYear = document.querySelector('#modelYear');
-    let fuel = document.querySelector('#fuel');
-    const code = years.children[years.selectedIndex].value;
-    urlResult = urlYears + '/' + code;
-    const data = await getAPIcontent(urlResult);
-    tableResult.style.display = 'block';
-    brandAndModel.innerHTML = data.brand + data.model;
-    price.innerHTML = 'Preço: ' + data.price;
-    modelYear.innerHTML = 'Ano: ' + data.modelYear;
-    fuel.innerHTML = 'Combustível: ' + data.fuel;
+    if (branch.value == '' || models.value == '' || years.value == '') {
+        alert('Preencha todos os campos!')
+    }
+    else {
+        let brandAndModel = document.querySelector('#brand-model');
+        let price = document.querySelector('#price');
+        let modelYear = document.querySelector('#modelYear');
+        let fuel = document.querySelector('#fuel');
+        const code = years.children[years.selectedIndex].value;
+        urlResult = urlYears + '/' + code;
+        const data = await getAPIcontent(urlResult);
+        tableResult.style.display = 'block';
+        brandAndModel.innerHTML = data.brand + data.model;
+        price.innerHTML = 'Preço: ' + data.price;
+        modelYear.innerHTML = 'Ano: ' + data.modelYear;
+        fuel.innerHTML = 'Combustível: ' + data.fuel;
+    }
 });
 
 function fillSelect(array, select) {
