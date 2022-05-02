@@ -2,15 +2,27 @@ const branch = document.querySelector('#branch');
 const models = document.querySelector('#models');
 const years = document.querySelector('#years');
 const btnCheckPrice = document.querySelector('button');
+let tableResult = document.querySelector('footer');
 
 let urlBranch;
-let urlModels; 
-let urlYears; 
+let urlModels;
+let urlYears;
 let urlResult;
+
+let backgroundIcons = document.querySelectorAll('.icons');
+backgroundIcons.forEach((iconOnFocus) => {
+    iconOnFocus.addEventListener('click', () => {
+        for (let backgrounds of backgroundIcons) {
+            backgrounds.style.backgroundColor = 'rgb(170, 170, 170)';
+        };
+        iconOnFocus.style.backgroundColor = 'yellowgreen';
+    });
+});
 
 const vehicles = document.querySelectorAll('.vehicleChoise');
 vehicles.forEach((divSelected) => {
     divSelected.addEventListener('click', async function getVehicle(event) {
+
 
         branch.length = 0;
         models.length = 0;
@@ -19,7 +31,6 @@ vehicles.forEach((divSelected) => {
         const element = event.target;
         const id = element.id;
         if (id == 'airplanes') return alert('prank');
-        insertIcon(id);
         urlBranch = `https://parallelum.com.br/fipe/api/v2/${id}/brands`;
         const options = await getAPIcontent(urlBranch);
         fillSelect(options, branch);
@@ -44,7 +55,7 @@ models.addEventListener('change', async function getAndFillYears() {
 });
 
 
-btnCheckPrice.addEventListener('click', async ()=> {
+btnCheckPrice.addEventListener('click', async () => {
     let brandAndModel = document.querySelector('#brand-model');
     let price = document.querySelector('#price');
     let modelYear = document.querySelector('#modelYear');
@@ -52,10 +63,11 @@ btnCheckPrice.addEventListener('click', async ()=> {
     const code = years.children[years.selectedIndex].value;
     urlResult = urlYears + '/' + code;
     const data = await getAPIcontent(urlResult);
+    tableResult.style.display = 'block';
     brandAndModel.innerHTML = data.brand + data.model;
-    price.innerHTML = data.price;
-    modelYear.innerHTML = data.modelYear;
-    fuel.innerHTML = data.fuel;
+    price.innerHTML = 'Preço: ' + data.price;
+    modelYear.innerHTML = 'Ano: ' + data.modelYear;
+    fuel.innerHTML = 'Combustível: ' + data.fuel;
 });
 
 function fillSelect(array, select) {
@@ -70,25 +82,7 @@ async function getAPIcontent(url) {
         , {
             method: 'GET',
         });
-        const data = await response.json();
-        urlRequest = url;
-        return data;
-    };
-
-function insertIcon(vechileType){
-    let vehicleIcon = document.querySelector('#vehicleIcon');
-    switch(vechileType){
-        case 'cars': 
-        vehicleIcon.src = './assets/car-side-solid.svg';
-        break;
-
-        case 'motorcycles': 
-        vehicleIcon.src = './assets/motorcycle-solid.svg';
-        break;
-    
-        case 'trucks': 
-        vehicleIcon.src = './assets/truck-solid.svg';
-        break;
-
-    };    
+    const data = await response.json();
+    urlRequest = url;
+    return data;
 };
