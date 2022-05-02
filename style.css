@@ -10,6 +10,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-x:auto;
 }
 
 header h1 {
@@ -32,7 +33,6 @@ header h1 {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-
 }
 
 .icons:hover {
@@ -41,13 +41,12 @@ header h1 {
 }
 
 .vehicleChoise {
-    width: 85px;
-    height: 85px;
+    width: 50px;
+    height: 50px;
     margin: 20px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-
 }
 
 #cars {
@@ -106,4 +105,30 @@ table {
 
 footer {
     display: none;
+}
+
+@media (max-width: 650px){
+    header h1{
+        font-size: 17px;
+    }
+
+    .icons {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+    }
+
+    .vehicleChoise {
+        margin: 13px;
+    }
+
+    #vehicle-details select {
+        width: 200px;
+    }
+
+    table {
+        width: 250px;
+        padding: 15px;
+    }
+    
 }
