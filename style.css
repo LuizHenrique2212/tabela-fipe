@@ -18,7 +18,7 @@ body {
     padding-top: 30px;
     background-color: rgb(255, 252, 248);
     width: 800px;
-    height: 1200px;
+    height: 1400px;
 }
 
 header {
@@ -133,6 +133,7 @@ table {
     margin-top: 50px;
     animation-name: showTable;
     animation-duration: 1.5s;
+    display: none;
 }
 
 #brand-model {
@@ -140,9 +141,9 @@ table {
     margin-bottom: 20px;
 }
 
-footer {
+/* footer {
     display: none;
-}
+} */
 
 @keyframes showTable {
     from {
