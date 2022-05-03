@@ -12,9 +12,7 @@ let urlResult;
 let backgroundIcons = document.querySelectorAll('.icons');
 backgroundIcons.forEach((iconOnFocus) => {
     iconOnFocus.addEventListener('click', () => {
-        for (let backgrounds of backgroundIcons) {
-            backgrounds.style.backgroundColor = ' rgb(252, 246, 236)';
-        };
+        reSetOptions();
         iconOnFocus.style.backgroundColor = 'yellowgreen';
     });
 });
@@ -67,6 +65,7 @@ btnCheckPrice.addEventListener('click', async () => {
         const code = years.children[years.selectedIndex].value;
         urlResult = urlYears + '/' + code;
         const data = await getAPIcontent(urlResult);
+        document.querySelector('table').style.display = 'block';
         tableResult.style.display = 'block';
         brandAndModel.innerHTML = data.brand + data.model;
         price.innerHTML = 'Preço: ' + data.price;
@@ -91,3 +90,13 @@ async function getAPIcontent(url) {
     urlRequest = url;
     return data;
 };
+
+function reSetOptions(){
+    branch.value = 0;
+    models.value = 0;
+    years.value = 0;
+    document.querySelector('table').style.display = 'none';
+    for (let backgrounds of backgroundIcons) {
+        backgrounds.style.backgroundColor = ' white';
+    };
+}
