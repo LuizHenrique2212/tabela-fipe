@@ -55,6 +55,7 @@ btnCheckPrice.addEventListener('click', async () => {
         alert('Preencha todos os campos!')
     }
     else {
+        let table = document.querySelector('table');
         let brandAndModel = document.querySelector('#brand-model');
         let price = document.querySelector('#price');
         let modelYear = document.querySelector('#modelYear');
@@ -62,7 +63,9 @@ btnCheckPrice.addEventListener('click', async () => {
         const code = years.children[years.selectedIndex].value;
         urlResult = urlYears + '/' + code;
         const data = await getAPIcontent(urlResult);
-        document.querySelector('table').style.display = 'block';
+        table.style.display = 'block';
+        table.style.marginLeft = 'auto';
+        table.style.marginRight = 'auto';
         tableResult.style.display = 'block';
         brandAndModel.innerHTML = data.brand + data.model;
         price.innerHTML = 'Preço: ' + data.price;
