@@ -12,7 +12,7 @@ let urlResult;
 let backgroundIcons = document.querySelectorAll('.icons');
 backgroundIcons.forEach((iconOnFocus) => {
     iconOnFocus.addEventListener('click', () => {
-        reSetOptions();
+        resetOptions();
         iconOnFocus.style.backgroundColor = 'yellowgreen';
     });
 });
@@ -20,12 +20,9 @@ backgroundIcons.forEach((iconOnFocus) => {
 const vehicles = document.querySelectorAll('.vehicleChoise');
 vehicles.forEach((divSelected) => {
     divSelected.addEventListener('click', async function getVehicle(event) {
-
-
         branch.length = 0;
         models.length = 0;
         years.length = 0;
-
         const element = event.target;
         const id = element.id;
         if (id == 'airplanes') return alert('Esta opção ainda não está disponível!');
@@ -77,7 +74,10 @@ btnCheckPrice.addEventListener('click', async () => {
 function fillSelect(array, select) {
     array.forEach((obj) => {
         option = new Option(obj.name, obj.code);
+        if(obj.name == 32000) return 0; 
+        else{
         select.options[select.options.length] = option;
+    }
     });
 };
 
@@ -91,7 +91,7 @@ async function getAPIcontent(url) {
     return data;
 };
 
-function reSetOptions(){
+function resetOptions(){
     branch.value = 0;
     models.value = 0;
     years.value = 0;

@@ -5,7 +5,8 @@
     font-family: 'Josefin Sans', sans-serif;
 }
 
-html,body {
+html,
+body {
     overflow-x: hidden;
 }
 
@@ -143,21 +144,25 @@ footer {
     display: none;
 }
 
-@keyframes showTable{
-    from{margin-top: 250px;}
-    to{margin-top: 50px;}
+@keyframes showTable {
+    from {
+        margin-top: 250px;
+    }
+
+    to {
+        margin-top: 50px;
+    }
 }
 
 @media (max-width: 800px) {
     #container {
         width: 100vw;
-        height: 100vh;
         margin: 0px auto;
         padding: 50px 10px 20px;
     }
 }
 
-@media (max-width: 650px) {    
+@media (max-width: 650px) {
     header h1 {
         font-size: 30px;
     }
@@ -188,7 +193,7 @@ footer {
 
 }
 
-@media (max-width: 500px) {    
+@media (max-width: 500px) {
     header h1 {
         font-size: 25px;
     }
